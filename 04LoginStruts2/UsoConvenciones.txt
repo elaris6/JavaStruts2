@@ -1,0 +1,44 @@
+CONVENCIONES EN STRUTS2
+
+El uso de convenciones en struts2, permitirá utilizar configuraciones por defecto
+para las tareas de identificación de clases (accioneS) y vistas, en lugar de tener
+que configurar estos mapeos en el fichero "struts.xml".
+
+MAPEO DE VISTAS
+
+Se pueden mapear las vistas si se depositan en la carpeta "/WEB-INF/content/", y
+deberán tener exactamente el nombre de invocación.
+
+Ejemplo: http://localhost8080/nombreAplicacion/saludar
+
+Esto automáticamente llamará al JSP /WEB-INF/content/saludar.jsp
+
+
+MAPEO DE ACCIONES
+
+Las acciones en Struts2 representan el controlador del patrón MVC. Para mapear 
+acciones (clases de tipo acción de struts2), el paquete en el que se contengan 
+estas clases deberá contener cualquiera de las siguientes palabras de forma 
+literal:
+
+- struts
+- struts2
+- action
+- actions
+
+Además, el nombre de la clase deberá ser igual al del path y finalizar con el 
+literal "Action".
+
+
+Ejemplo: http://localhost8080/nombreAplicacion/saludar, el path "/saludar" llamará
+a la siguiente clase de acción: nombrepaquete.actions.SaludarAction
+
+Ejemplo con path más complejo: http://localhost8080/nombreAplicacion/saludos/saludo1
+En este caso el path "/saludos/saludo1" buscaría la siguiente clase de acción:
+nombrepaquete.struts2.saludos.Saludo1Action
+
+INFO ADICIONAL CONVENCIONES STRUTS2
+
+https://struts.apache.org/plugins/convention/
+
+

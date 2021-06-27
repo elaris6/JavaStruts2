@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+    "http://struts.apache.org/dtds/struts-2.5.dtd">
+
+<!-- A continuación se describen las acciones de Struts 2 -->
+<struts>
+    <package name="struts2" extends="struts-default">
+        
+        <!-- Se define una acción saludar (lanzada desde "index.html") y a ésta
+        se le asigna la ejecución de la clase de tipo Action "HolaMundoAction".
+        En esta clase se ejecutan las acciones pertinentes en el mñetodo "execute",
+        que será llamado de forma automática y devolverá una cadena ("exito"), que
+        que será identificada para llamar a la JSP pertinente, según la cadena
+        recibida. -->
+        <action name="saludar" class="beans.HolaMundoAction">
+            <result name="exito">/saludos.jsp</result>
+        </action>
+        
+    </package>
+</struts>
