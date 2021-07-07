@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+    "http://struts.apache.org/dtds/struts-2.5.dtd">
+
+<!-- A continuación se describen las acciones de Struts 2 -->
+<struts>
+    <package name="default" extends="struts-default">
+        
+        <!-- No es necesario definir acciones asociadas a clases de tipo "Action",
+        se pueden definir directamente redirecciones.
+        En este caso en la página "index.html" se pondrá un enlace "login", que 
+        se resolverá con esta redirección. -->
+        <action name="login">
+            <result>/WEB-INF/content/login.jsp</result>
+        </action>
+        
+        <!-- Se define una acción "validarUusario" (lanzada desde "login.jsp") y a ésta
+        se le asigna la ejecución de la clase de tipo Action "LoginAction".
+        En esta clase se ejecutan las acciones pertinentes en el método "execute",
+        que será llamado de forma automática y devolverá una cadena, que
+        que será identificada para llamar a la JSP pertinente, según la cadena
+        recibida (en este caso podría ser "success" ó "input". -->
+        
+        <action name="validarUsuario" class="beans.actions.LoginAction">
+            <result name="success">/WEB-INF/content/bienvenido.jsp</result>
+            
+            <!-- En el caso de recibir la cadena "input", se define una redirección
+            que llevará a la acción definida arriba, llamada "login". -->
+            <result name="input" type="redirectAction">login</result>
+        </action>
+        
+        
+    </package>
+</struts>

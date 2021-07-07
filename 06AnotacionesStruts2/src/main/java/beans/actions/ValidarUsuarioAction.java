@@ -1,12 +1,21 @@
 package beans.actions;
 
+import static com.opensymphony.xwork2.Action.SUCCESS;
 import com.opensymphony.xwork2.ActionSupport;
-import org.apache.logging.log4j.*;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.apache.struts2.convention.annotation.Action;
+import org.apache.struts2.convention.annotation.Result;
+import org.apache.struts2.convention.annotation.Results;
 
-/* En este caso la clase de tipo Action, se hace heredar de la clase "ActionSupport",
-que a su vez implementa la interfaz "Action" y otras clases útiles para gestión de
-formularios, textos y properties. */
-public class LoginAction extends ActionSupport {
+/* Para definir los resultados sustituyendo al fichero "struts.xml", se incluye la
+anotación "Results", que a su vez incluye varias anotaciones de tipo "Result", que
+especifican la acción a realizar en función de cada resultado esperado, al igual
+que se indica en el fichero "struts.xml". */
+@Results({
+    @Result(name="success", location="/WEB-INF/content/bienvenido.jsp"),
+    @Result(name="input", location="login", type="redirectAction")})
+public class ValidarUsuarioAction extends ActionSupport {
 
     // Se inicializa la instancia de "Logger" para escribir el log
     Logger log = LogManager.getLogger(LoginAction.class);
@@ -14,13 +23,13 @@ public class LoginAction extends ActionSupport {
     private String usuario;
     private String password;
 
-    /*  */
+    /* Se especifica la anotación "Action", para identificar esta acción con el
+    nombre esperado. En este caso "validarUusuario". */
+    @Action("validarUsuario")
     public String execute() {
         log.info("Usuario: " + this.usuario);
         log.info("Password: " + this.password);
 
-        /* Al extender de "ActionSupport" que implementa "Action", se pueden usar
-        las constantes definidas en esta interfaz, como retorno de la acción. */
         if (this.usuario != null) {
             if (this.usuario.equals("admin")) {
                 if (this.password.equals("admin")) {
@@ -33,6 +42,7 @@ public class LoginAction extends ActionSupport {
             }
         }
         return INPUT;
+
     }
 
     public String getUsuario() {
@@ -50,5 +60,4 @@ public class LoginAction extends ActionSupport {
     public void setPassword(String password) {
         this.password = password;
     }
-
 }

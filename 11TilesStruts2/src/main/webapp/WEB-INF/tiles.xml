@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+    "-//Apache Software Foundation/DTD Tiles Configuration 3.0//EN"
+    "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+    
+<!-- En el fichero "tiles.xml" se añaden las definiciones de las plantillas que
+van a ser usadas para componer el layout de las páginas de la aplicación. 
+Se genera un tipo de plantilla y luego cada uno de los componentes de la plantilla.
+Los componentes/atributos mostrados en el ejemplo son demostrativos, no es obligatorio
+tener estos atributos ni nombrarlos de esta manera. -->    
+<tiles-definitions>
+    <definition name="layout" template="/WEB-INF/content/layout.jsp">
+        <put-attribute name="title" value="Plantilla" />
+        <put-attribute name="header" value="/WEB-INF/content/header.jsp" />
+        <put-attribute name="menu" value="/WEB-INF/content/menu.jsp"  />
+        <put-attribute name="body" value="/WEB-INF/content/body.jsp" />
+        <put-attribute name="footer" value="/WEB-INF/content/footer.jsp" />
+    </definition>
+    
+    <!-- Una vez definida la plantilla, se definirá cada una de las páginas que va a
+    hacer uos de ella, modificando los atributos que sean específicos. Por ejemplo en
+    este caso, el title y el jsp de body. -->
+    <definition name="bienvenidoTile" extends="layout">
+        <put-attribute name="title" value="Bienvenido" />
+        <put-attribute name="body" value="/WEB-INF/content/bienvenido.jsp" />
+    </definition>
+    
+    <definition name="personasTile" extends="layout">
+        <put-attribute name="title" value="Personas" />
+        <put-attribute name="body" value="/WEB-INF/content/personas.jsp" />
+    </definition>
+    
+</tiles-definitions>

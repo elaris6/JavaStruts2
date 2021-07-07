@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+    "http://struts.apache.org/dtds/struts-2.5.dtd">
+
+<!-- A continuación se describen las acciones de Struts 2 -->
+<struts>
+    <constant name="struts.convention.default.parent.package" value="es.local.personal.actions" />
+    <package name="es.local.personal.actions" extends="struts-default">
+        
+        <!-- Se define el tipo de resultado a procesar indicando que es de la
+        clase "TilesResult" (con el path completo de la clase). De esta forma no será
+        necesario especificar cada tipo de resultado de forma individiual, ya que se
+        han especificado como de tipo "tiles" en la clase "LinkAction", que va a
+        realizar las llamadas a los resultados, y por tanto se resolverán de forma
+        automática por el framework de Struts2, cargando las partes de la plantilla
+        que correspondan según el resultado.        -->
+        <result-types>
+            <result-type name="tiles" class="org.apache.struts2.views.tiles.TilesResult" />
+        </result-types>
+        
+    </package>
+</struts>
